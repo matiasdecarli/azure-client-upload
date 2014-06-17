@@ -27,7 +27,7 @@
 <script>
    function uploadFile() {
         var file = document.getElementById('fileToUpload').files[0];
-        $.ajax("http://localhost:8888/getsignature/test.txt" , {
+        $.ajax("http://localhost:1337/getsignature/test.txt" , {
             dataType: "jsonp",
             success: function(x){                 
                 var blobUrl = x.url; 

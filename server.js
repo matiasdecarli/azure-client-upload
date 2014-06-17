@@ -6,27 +6,27 @@ var express = require('express');
 var port = process.env.PORT || 1337;
 app.enable("jsonp callback");
 
-// var containerName = 'testcontainer';
-// var maxAgeInSeconds = 500;
+var containerName = 'testcontainer';
+var maxAgeInSeconds = 500;
 
-// var blobService = azure.createBlobService();
-// blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
-// enableCORS(containerName, maxAgeInSeconds);
+var blobService = azure.createBlobService();
+blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
+//enableCORS(containerName, maxAgeInSeconds);
 
-// app.get('/getsignature/:file', function(req, res){	
-// 	var url = blobService.generateSharedAccessSignature(containerName, 'test.txt', {
-// 	AccessPolicy : {
-// 		Permissions : "rwdl",     
-// 		Expiry : getDate()
-// 	}});
-// 	res.jsonp({url: url.url()});
-// });
+app.get('/getsignature/:file', function(req, res){	
+	var url = blobService.generateSharedAccessSignature(containerName, 'test.txt', {
+	AccessPolicy : {
+		Permissions : "rwdl",     
+		Expiry : getDate()
+	}});
+	res.jsonp({url: url.url()});
+});
 
-// function getDate(){
-// 	var date = new Date();
-// 	date.setHours((date).getHours() + 1);
-// 	return date;
-// }
+function getDate(){
+	var date = new Date();
+	date.setHours((date).getHours() + 1);
+	return date;
+}
 
 app.use(express.static(__dirname + '/public'));
 app.listen(port);	

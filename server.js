@@ -1,4 +1,4 @@
-var azure = require("azure");
+//var azure = require("azure");
 var app = require('express')();
 var crypto = require('crypto');
 var request = require('request');

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <script src="jquery-1.10.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <form id="form1" onsubmit="return false;">
+            <input type="file" name="fileToUpload" id="fileToUpload"/>
+            <input type="button" onclick="uploadFile()" value="Upload" />
+        </form>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    </body>
+</html>
+<script>
+   function uploadFile() {
+        var file = document.getElementById('fileToUpload').files[0];
+        $.ajax("http://localhost:8888/getsignature/test.txt" , {
+            dataType: "jsonp",
+            success: function(x){                 
+                var blobUrl = x.url; 
+                var formData = file;
+
+                 $.ajax({
+                    url: blobUrl,
+                    type: 'PUT',
+                    xhr: function() {  // Custom XMLHttpRequest
+                        var myXhr = $.ajaxSettings.xhr();                        
+                        return myXhr;
+                    },
+                    //Ajax events
+                    
+                    success: function(response){
+                        console.log('success: ', response);
+                    },
+                    error: function(error){
+                        console.log('error: ', error);                  
+                    },             
+                    data: formData,                    
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+
+                // $.ajax({
+                //     type: 'PUT',
+                //     data: file,
+                //     url: blobUrl,
+                //     headers: {                                              
+                //     },
+                //     success: function(response){
+                //         console.log('success: ', response);
+                //     },
+                //     error: function(error){
+                //         console.log('error: ', error);                  
+                //     }
+                // });
+            }        
+        });
+    }
+</script>

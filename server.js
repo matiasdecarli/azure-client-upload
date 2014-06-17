@@ -9,8 +9,8 @@ app.enable("jsonp callback");
 var containerName = 'testcontainer';
 var maxAgeInSeconds = 500;
 
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
+//var blobService = azure.createBlobService();
+//blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
 //enableCORS(containerName, maxAgeInSeconds);
 
 // app.get('/getsignature/:file', function(req, res){	

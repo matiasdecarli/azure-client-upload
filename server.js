@@ -1,4 +1,4 @@
-//var azure = require("azure");
+var azure = require("azure");
 var app = require('express')();
 var crypto = require('crypto');
 var request = require('request');
@@ -9,7 +9,7 @@ app.enable("jsonp callback");
 var containerName = 'testcontainer';
 var maxAgeInSeconds = 500;
 
-var blobService = azure.createBlobService();
+//var blobService = azure.createBlobService();
 //blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
 //enableCORS(containerName, maxAgeInSeconds);
 

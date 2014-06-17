@@ -22,11 +22,11 @@ var maxAgeInSeconds = 500;
 // 	res.jsonp({url: url.url()});
 // });
 
-function getDate(){
-	var date = new Date();
-	date.setHours((date).getHours() + 1);
-	return date;
-}
+// function getDate(){
+// 	var date = new Date();
+// 	date.setHours((date).getHours() + 1);
+// 	return date;
+// }
 
 app.use(express.static(__dirname + '/public'));
 app.listen(port);	

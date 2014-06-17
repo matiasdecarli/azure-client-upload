@@ -13,14 +13,14 @@ var maxAgeInSeconds = 500;
 //blobService.createContainerIfNotExists(containerName, {publicAccessLevel : 'blob'}, function(error){});
 //enableCORS(containerName, maxAgeInSeconds);
 
-// app.get('/getsignature/:file', function(req, res){	
-// 	var url = blobService.generateSharedAccessSignature(containerName, 'test.txt', {
-// 	AccessPolicy : {
-// 		Permissions : "rwdl",     
-// 		Expiry : getDate()
-// 	}});
-// 	res.jsonp({url: url.url()});
-// });
+app.get('/getsignature/:file', function(req, res){	
+	// var url = blobService.generateSharedAccessSignature(containerName, 'test.txt', {
+	// AccessPolicy : {
+	// 	Permissions : "rwdl",     
+	// 	Expiry : getDate()
+	// }});
+	// res.jsonp({url: url.url()});
+});
 
 function getDate(){
 	var date = new Date();

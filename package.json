@@ -1,6 +1,6 @@
 {
-  "name": "embercast-auth-server",
-  "description": "Simple server used in the Authentication Embercast",
+  "name": "test-upload",
+  "description": "a POC to upload files to azure directly from client",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
@@ -9,7 +9,6 @@
   "dependencies": {
     "express": "^4.4.3",
     "azure": "^0.9.8",
-    "crypto": "0.0.3",
     "request": "^2.36.0"
   }
 }

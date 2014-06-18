@@ -2,18 +2,18 @@ var azure = require("azure");
 var app = require('express')();
 var express = require('express');
 var port = process.env.PORT || 5000;
-var expiryTime = 5;
 
 app.enable("jsonp callback");
 
 var blobService = azure.createBlobService();
 blobService.createContainerIfNotExists("uploads", function(error){});
 
-app.get('/getsignature/:file', function(req, res){
+app.get('/getsignature/:file', function(req, res){    
+    console.log('expiry', getDate());
     var url = blobService.generateSharedAccessSignature("uploads", req.params.file, {
     AccessPolicy : {
         Permissions : "rwdl",
-        Expiry : getDate()
+        Expiry: getDate()
     }});
     res.jsonp({url: url.url()});
 });
@@ -24,6 +24,6 @@ console.log('listening on ',port);
 
 function getDate(){
     var date = new Date();
-    date.setHours((date).getSeconds() + expiryTime);
+    date.setFullYear((date).getFullYear() + 35);
     return date;
 }

@@ -28,7 +28,7 @@
 <script>    
    function uploadFile() {
         var file = document.getElementById('fileToUpload').files[0];        
-        jQuery.ajax("getsignature/"+file.name , {
+        jQuery.ajax("http://localhost:1337/getsignature/"+file.name , {
             cache:false,
             dataType: "jsonp",
             success: function(x){ 

@@ -24,6 +24,6 @@ console.log('listening on ',port);
 
 function getDate(){
     var date = new Date();
-    date.setHours((date).getMinutes() + expiryTime);
+    date.setHours((date).getSeconds() + expiryTime);
     return date;
 }

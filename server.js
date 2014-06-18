@@ -1,6 +1,8 @@
 var azure = require("azure");
 var app = require('express')();
 var express = require('express');
+var port = process.env.PORT || 5000;
+
 app.enable("jsonp callback");
 
 var blobService = azure.createBlobService();
@@ -16,8 +18,8 @@ app.get('/getsignature/:file', function(req, res){
 });
 
 app.use(express.static(__dirname + '/public'));
-app.listen(1337);   
-console.log('listening on 1337');
+app.listen(port);   
+console.log('listening on ',port);
 
 function getDate(){
     var date = new Date();

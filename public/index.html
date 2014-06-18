@@ -33,7 +33,6 @@
             dataType: "jsonp",
             success: function(x){ 
                 bloburl = x.url; 
-
                 var xhr = new XMLHttpRequest();
                 xhr.open("PUT", bloburl);
                 xhr.setRequestHeader('x-ms-blob-type', 'BlockBlob');       

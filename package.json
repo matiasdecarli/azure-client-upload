@@ -1,6 +1,11 @@
 {
   "name": "test-upload",
-  "description": "POC",
+  "description": "a POC to upload files to azure directly from client",
+  "author": {
+    "name": "Matias De Carli",
+    "email": "matiasdecarli@gmail.com",
+    "url": "http://matiasdecarli.com"
+  },
   "version": "0.0.1",
   "private": true,
   "devDependencies": {

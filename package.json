@@ -1,6 +1,6 @@
 {
   "name": "test-upload",
-  "description": "a POC to upload files to azure directly from client",
+  "description": "POC",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {

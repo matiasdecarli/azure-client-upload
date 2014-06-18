@@ -17,57 +17,28 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <form id="form1" onsubmit="return false;">
+        <form id="form1">
             <input type="file" name="fileToUpload" id="fileToUpload"/>
             <input type="button" onclick="uploadFile()" value="Upload" />
         </form>
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     </body>
 </html>
-<script>
+<script>    
    function uploadFile() {
-        var file = document.getElementById('fileToUpload').files[0];
-        $.ajax("http://localhost:1337/getsignature/test.txt" , {
+        var file = document.getElementById('fileToUpload').files[0];        
+        jQuery.ajax("getsignature/"+file.name , {
+            cache:false,
             dataType: "jsonp",
-            success: function(x){                 
-                var blobUrl = x.url; 
-                var formData = file;
+            success: function(x){ 
+                bloburl = x.url; 
 
-                 $.ajax({
-                    url: blobUrl,
-                    type: 'PUT',
-                    xhr: function() {  // Custom XMLHttpRequest
-                        var myXhr = $.ajaxSettings.xhr();                        
-                        return myXhr;
-                    },
-                    //Ajax events
-                    
-                    success: function(response){
-                        console.log('success: ', response);
-                    },
-                    error: function(error){
-                        console.log('error: ', error);                  
-                    },             
-                    data: formData,                    
-                    cache: false,
-                    contentType: false,
-                    processData: false
-                });
-
-                // $.ajax({
-                //     type: 'PUT',
-                //     data: file,
-                //     url: blobUrl,
-                //     headers: {                                              
-                //     },
-                //     success: function(response){
-                //         console.log('success: ', response);
-                //     },
-                //     error: function(error){
-                //         console.log('error: ', error);                  
-                //     }
-                // });
-            }        
-        });
+                var xhr = new XMLHttpRequest();
+                xhr.open("PUT", bloburl);
+                xhr.setRequestHeader('x-ms-blob-type', 'BlockBlob');       
+                xhr.send(document.getElementById('fileToUpload').files[0]);
+            }
+        });       
     }
 </script>

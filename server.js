@@ -2,6 +2,7 @@ var azure = require("azure");
 var app = require('express')();
 var express = require('express');
 var port = process.env.PORT || 5000;
+var expiryTime = 5;
 
 app.enable("jsonp callback");
 
@@ -23,6 +24,6 @@ console.log('listening on ',port);
 
 function getDate(){
     var date = new Date();
-    date.setHours((date).getHours() + 2);
+    date.setHours((date).getMinutes() + expiryTime);
     return date;
 }

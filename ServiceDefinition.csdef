@@ -1,7 +1,0 @@
-<Task commandLine="install_nodemodules.cmd" executionContext="elevated">
-    <Environment>
-      <Variable name="EMULATED">
-        <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
-      </Variable>
-    </Environment>
-</Task>

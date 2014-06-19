@@ -26,3 +26,9 @@ build/Release
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 >>>>>>> adfe2f9bafdf13f00b7b97f749025ac38bedbbd1
 node_modules
+
+# OS generated files #
+######################
+*/.DS_Store
+.DS_Store
+.DS_Store?

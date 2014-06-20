@@ -5,7 +5,7 @@ var port = process.env.PORT || 5000;
 
 //app.enable("jsonp callback");
 
-app.get('http://matias.local:8080/getsignature/:file', function(req, res){    
+app.get('/getsignature/:file', function(req, res){    
     var blobService = azure.createBlobService();
     blobService.createContainerIfNotExists("uploads", function(error){
         var url = blobService.generateSharedAccessSignature("uploads", req.params.file, {

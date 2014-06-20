@@ -27,7 +27,7 @@
 <script>    
    function uploadFile() {
         var file = document.getElementById('fileToUpload').files[0];        
-        jQuery.ajax("http://matias.local:8080/api/services/uploader/signature/"+file.name , {
+        jQuery.ajax("getsignature/:file"+file.name , {
             cache:false,
             dataType: "jsonp",
             success: function(x){ 

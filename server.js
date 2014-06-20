@@ -3,18 +3,18 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 5000;
 
-app.enable("jsonp callback");
+//app.enable("jsonp callback");
 
-var blobService = azure.createBlobService();
-blobService.createContainerIfNotExists("uploads", function(error){});
-
-app.get('/getsignature/:file', function(req, res){    
-    var url = blobService.generateSharedAccessSignature("uploads", req.params.file, {
-    AccessPolicy : {
-        Permissions : "rwdl",
-        Expiry: getDate()
-    }});
-    res.jsonp({url: url.url()});
+app.get('http://matias.local:8080/getsignature/:file', function(req, res){    
+    var blobService = azure.createBlobService();
+    blobService.createContainerIfNotExists("uploads", function(error){
+        var url = blobService.generateSharedAccessSignature("uploads", req.params.file, {
+        AccessPolicy : {
+            Permissions : "rwdl",
+            Expiry: getDate()
+        }});
+        res.jsonp({url: url.url()});
+    });    
 });
 
 app.use(express.static(__dirname + '/public'));
